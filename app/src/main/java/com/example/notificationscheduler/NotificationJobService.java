@@ -14,7 +14,6 @@ public class NotificationJobService extends JobService {
 
     private static final String PRIMARY_CHANNEL_ID =
             "primary_notification_channel";
-    // Notification manager.
     NotificationManager mNotifyManager;
 
     @Override
@@ -45,16 +44,12 @@ public class NotificationJobService extends JobService {
     }
 
     public void createNotificationChannel() {
+        mNotifyManager =
+                (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
-        // Create a notification manager object.
-        mNotifyManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-        // Notification channels are only available in OREO and higher.
-        // So, add a check on SDK version.
         if (android.os.Build.VERSION.SDK_INT >=
                 android.os.Build.VERSION_CODES.O) {
 
-            // Create the NotificationChannel with all the parameters.
             NotificationChannel notificationChannel = new NotificationChannel
                     (PRIMARY_CHANNEL_ID,
                             getString(R.string.job_service_notification),

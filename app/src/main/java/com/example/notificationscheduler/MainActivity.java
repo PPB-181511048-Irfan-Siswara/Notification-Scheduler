@@ -35,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
         final TextView seekBarProgress = findViewById(R.id.seekBarProgress);
 
         mScheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
-
-        // Updates the TextView with the value from the seekbar.
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -58,9 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * onClick method that schedules the jobs based on the parameters set.
-     */
     public void scheduleJob(View view) {
         RadioGroup networkOptions = findViewById(R.id.networkOptions);
 
